@@ -74,11 +74,11 @@ nieto(Y, Z) :- padre(Z, X) , (padre(X, Y) ; madre(X,Y)) , hombre(Z). /*CONSULTA:
 nieta(Y, Z) :- madre(Z, X), (madre(X, Y) ; padre(X, Y)) , mujer(Y). /*CONSULTA: nieta(NIETO, ABUELA). */
 
 %HERMANOS
-hermanos(Y, Z) :- madre(Y, Z), hombre(Z).
+hermanos(X, Y) :- (padre(Z, X), padre(Z, Y));(madre(Z, X), madre(Z, Y)), hombre(X), hombre(Y). /*CONSULTA: hermanos(sergio, luis). */
 
 %HERMANAS
-hermanas(X, Y) :- madre(X, Y), mujer(Y).
+hermanas(X, Y) :- (padre(Z, X), padre(Z, Y));(madre(Z, X), madre(Z, Y)), mujer(X), mujer(Y). /*CONSULTA: hermanas(diana, maria). */
 
 %PAREJAS
 esposo(Z, Y) :- padre(Z, X) , madre(Y, X). /*CONSULTA: esposo(ESPOSO, ESPOSA). */
-esposos(X, Y, Z) :- (padre(X, Z), madre(Y, Z)), hombre(X), mujer(Y). /*CONSULTA: esposos(ESPOSO, ESPOSA, HIJO). */ %Esposos con hijo
+esposos(X, Y, Z) :- (padre(X, Z), madre(Y, Z)), hombre(X), mujer(Y). /*CONSULTA: esposos(ESPOSO, ESPOSA, HIJO). */ %Esposos con hijo en común
