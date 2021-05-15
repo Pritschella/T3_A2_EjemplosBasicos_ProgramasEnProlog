@@ -59,25 +59,25 @@ hijas(Y) :- (madre(_, Y) ; padre(_, Y)), mujer(Y).
 %------------------ Actividad 2------------------------------------------
 
 %ABUELOS
-abuelos(Z, Y) :- padre(Z, X) , (padre(X, Y) ; madre(X, Y)), hombre(Z).
+abuelos(Z, Y) :- padre(Z, X) , (padre(X, Y) ; madre(X, Y)), hombre(Z). /*CONSULTA: abuelos(ABUELO, NIETO). */
 
 %ABUELAS
-abuelas(Z,Y) :- madre(Z, X) , (madre(X, Y) ; padre(X, Y), mujer(Z)).
+abuelas(Z,Y) :- madre(Z, X) , (madre(X, Y) ; padre(X, Y)), mujer(Z). /*CONSULTA: abuelas(ABUELA, NIETX). */
 
 %PERSONA
-persona(X) :- mujer(X) ; hombre(X). /*CONSULTA:  */
+persona(X, Y) :- mujer(X) ; hombre(Y). /*CONSULTA: persona(MUJER, HOMBRE) */
 
 %NIETO
-
+nieto(Y, Z) :- padre(Z, X) , (padre(X, Y) ; madre(X,Y)) , hombre(Z). /*CONSULTA: nieto(NIETO, ABUELO). */
 
 %NIETA
-
+nieta(Y, Z) :- madre(Z, X), (madre(X, Y) ; padre(X, Y)) , mujer(Y). /*CONSULTA: nieta(NIETO, ABUELA). */
 
 %HERMANOS
-
+hermanos(Y, Z) :- madre(Y, Z), hombre(Z).
 
 %HERMANAS
-
+hermanas(X, Y) :- madre(X, Y), mujer(Y).
 
 %PAREJAS
 esposo(Z, Y) :- padre(Z, X) , madre(Y, X). /*CONSULTA: esposo(ESPOSO, ESPOSA). */
